@@ -276,13 +276,12 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         // Insertion des offres d'emploi
-
         $recruteurs = $manager->getRepository(EntrepriseProfil::class)->findAll();
         $tags = $manager->getRepository(Tag::class)->findAll();
         $contractTypes = $manager->getRepository(ContractType::class)->findAll();
 
         
-        for($i= 0 ; $i <=500 ; $i++){
+        for($i= 0 ; $i <=200 ; $i++){
             $offer = new Offer();
             $offer->setTitle($faker->jobTitle());
             $offer->setShortDescription($faker->paragraph);
@@ -302,11 +301,10 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         // Insertion des candidatures
-
         $candidates = $manager->getRepository(User::class)->findByStatus('Candidat');
         $offers = $manager->getRepository(Offer::class)->findAll();
 
-        for($i=0; $i <4000 ; $i++){
+        for($i=0; $i <400 ; $i++){
             $randomCandidate = $faker->randomElement($candidates);
             $randomOffer = $faker->randomElement($offers);
             $application = new Application();
